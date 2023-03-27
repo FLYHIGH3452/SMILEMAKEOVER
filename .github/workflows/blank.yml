@@ -1,0 +1,93 @@
+import datetime
+
+# Define a dictionary of dental packages with their prices and details
+dental_packages = {
+    "Package 1": {
+        "price": 2000,
+        "details": "Includes transportation, 3-night hotel stay, and cleaning and filling treatments."
+    },
+    "Package 2": {
+        "price": 3000,
+        "details": "Includes transportation, 5-night hotel stay, and teeth whitening and filling treatments."
+    },
+    "Package 3": {
+        "price": 4000,
+        "details": "Includes transportation, 7-night hotel stay, and cleaning, filling, and crown treatments."
+    }
+}
+
+# Define a dictionary of dental clinics with their details
+dental_clinics = {
+    "Clinic A": {
+        "address": "123 Main St, City A",
+        "dentist": "Dr. X",
+        "rating": 4.5,
+        "consultation_fee": 50
+    },
+    "Clinic B": {
+        "address": "456 Oak St, City B",
+        "dentist": "Dr. Y",
+        "rating": 5.0,
+        "consultation_fee": 75
+    },
+    "Clinic C": {
+        "address": "789 Maple St, City C",
+        "dentist": "Dr. Z",
+        "rating": 4.0,
+        "consultation_fee": 100
+    }
+}
+
+# Define a list of patient accounts
+patient_accounts = []
+
+# Define a function to display available dental packages
+def display_packages():
+    print("Available dental packages:")
+    for package, details in dental_packages.items():
+        print(f"{package}: {details['details']} (Price: ${details['price']})")
+
+# Define a function to display available dental clinics
+def display_clinics():
+    print("Available dental clinics:")
+    for clinic, details in dental_clinics.items():
+        print(f"{clinic}: {details['address']}, Dentist: {details['dentist']}, Rating: {details['rating']}")
+
+# Define a function to create a new patient account
+def create_account():
+    print("Please enter your details to create a new account.")
+    email = input("Email: ")
+    phone_number = input("Phone number: ")
+    name = input("First name: ")
+    surname = input("Last name: ")
+    patient = {
+        "email": email,
+        "phone_number": phone_number,
+        "name": name,
+        "surname": surname
+    }
+    patient_accounts.append(patient)
+    print(f"Account created for {name} {surname} ({email}).")
+
+# Define a function to book a dental package
+def book_package(patient):
+    display_packages()
+    package = input("Enter the package you want to book: ")
+    if package in dental_packages:
+        details = dental_packages[package]
+        print(f"You have selected {package}. Details: {details['details']}.")
+        confirm = input("Do you want to confirm your booking? (Y/N): ")
+        if confirm == "Y":
+            print(f"Your booking for {package} has been confirmed. Total cost: ${details['price']}.")
+            make_payment(details['price'])
+            return True
+    print("Booking cancelled.")
+    return False
+
+# Define a function to book a dental appointment
+def book_appointment(patient):
+    display_clinics()
+    clinic = input("Enter the clinic you want to book an appointment with: ")
+    if clinic in dental_clinics:
+        details = dental_clinics[clinic]
+
